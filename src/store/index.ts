@@ -6,7 +6,7 @@ import { Post } from "../types";
 
 export default createStore({
     state:{
-        posts: JSON.parse(localStorage.getItem('NAMI_TEST_DATA')) || [] as Array<Post>,
+        posts: JSON.parse(localStorage.getItem('NAMI_TEST_DATA') || '') || [] as Array<Post>,
     },
 
     getters: {
@@ -16,7 +16,7 @@ export default createStore({
     },
 
     actions: {
-        async [ActionTypes.FETCH_POSTS]({ commit }): void {
+        async [ActionTypes.FETCH_POSTS]({ commit })  {
             const newPosts = await posts.fetchPostsData();
             localStorage.setItem('NAMI_TEST_DATA', JSON.stringify(newPosts));
             commit(MutationTypes.SET_POSTS, newPosts);
