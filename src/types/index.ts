@@ -4,3 +4,7 @@ export interface Post {
     body: string;
     title: string;
 }
+
+export interface PostsState {
+    posts: Array<Post>;
+}
