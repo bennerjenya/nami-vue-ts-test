@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import { ActionTypes } from "../types/action-types";

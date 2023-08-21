@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import ContentHolder from './components/ContentHolder.vue';
 </script>
 

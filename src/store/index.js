@@ -1,21 +1,20 @@
-import { createStore, Commit } from 'vuex';
-import posts from '../api/posts';
-import { ActionTypes } from "../types/action-types";
-import { MutationTypes } from "../types/mutation-types";
-import { Post, PostsState } from "../types";
+import { createStore } from 'vuex';
+import { ActionTypes } from "../types/action-types.js";
+import { MutationTypes } from "../types/mutation-types.js";
+import posts from '../api/posts.js'
 
-const state: PostsState = {
+const state = {
     posts: JSON.parse(localStorage.getItem('NAMI_TEST_DATA') || '[]') || [],
 }
 
 const getters = {
-    getPosts: (state: PostsState): Array<Post> => {
+    getPosts(state) {
         return state.posts;
     },
 }
 
 const actions = {
-    async [ActionTypes.FETCH_POSTS]({ commit }: { commit: Commit })  {
+    async [ActionTypes.FETCH_POSTS]({ commit })  {
         const newPosts = await posts.fetchPostsData();
         localStorage.setItem('NAMI_TEST_DATA', JSON.stringify(newPosts));
         commit(MutationTypes.SET_POSTS, newPosts);
@@ -23,7 +22,7 @@ const actions = {
 }
 
 const mutations = {
-    [MutationTypes.SET_POSTS](state: PostsState, data: Array<Post>): void {
+    [MutationTypes.SET_POSTS](state, data) {
         state.posts = data;
     },
 }

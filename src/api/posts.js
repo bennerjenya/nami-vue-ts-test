@@ -1,7 +1,5 @@
-import { Post } from "../types";
-
 export default {
-    async fetchPostsData(): Promise<Array<Post> | Error> {
+    async fetchPostsData() {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
         if (!response.ok) {
             console.error('Не удалось загрузить данные с сервера');
